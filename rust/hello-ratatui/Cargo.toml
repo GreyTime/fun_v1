@@ -1,0 +1,11 @@
+[package]
+name = "hello-ratatui"
+version = "0.1.0"
+description = "An example generated using the simple template"
+authors = ["Pele <trickkiste1@gmx.de>"]
+license = "MIT"
+edition = "2024"
+
+[dependencies]
+ratatui = "0.29.0"
+crossterm = "0.28.1"
