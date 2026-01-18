@@ -32,7 +32,7 @@ struct Cable {
 impl Cable {
     fn to_csv(self: Cable) -> &[String] {
         let string = [self.port1.to_string(), self.port2.to_string(), self.length_in_m.to_string()]; 
-        string
+        &string
     }
 }
 
