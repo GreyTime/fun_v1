@@ -1,4 +1,5 @@
 use std::error::Error;
+use text_io::read;
 use csv::Writer;
 
 
@@ -24,21 +25,38 @@ impl ToString for Port {
 struct Cable {
     port1: Port,
     port2: Port,
-    length_in_m: f32   
+    length_in_m: f32
 }
 
 
 
 impl Cable {
-    fn to_csv(self: Cable) -> &[String] {
+    fn to_csv(self: &Cable) -> Vec<String>{
         let string = [self.port1.to_string(), self.port2.to_string(), self.length_in_m.to_string()]; 
-        &string
+        (&string).to_vec()
     }
 }
 
 fn main() {
-    let test_cable = Cable { port1: Port::UsbC , port2: Port::UsbA, length_in_m: 1.5 };
-    write_cable(test_cable);
+    loop {
+        println!("What do you want to do? (1: add cable)");
+        let user_option: i32 = read!();
+        if user_option == 1 {
+            println!("Please enter the cable Port1:");
+            let port1: String = read!();
+            println!("Please enter the cable Port2:");
+            let port2: String = read!();
+            println!("Please enter the cable length in m:");
+            let length: f32 = read!();
+
+            let cable = Cable { port1: Port::UsbC , port2: Port::UsbA, length_in_m: 1.5 };
+
+        }
+        let test_cable = Cable { port1: Port::UsbC , port2: Port::UsbA, length_in_m: 1.5 };
+
+        write_cable(test_cable);
+    }
+
 }
 
 
